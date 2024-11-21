@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Hewan</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <!-- Include navbar -->
+    <%- include('../partials/navbar') %>
+
+    <h1>Daftar Hewan</h1>
+    <a href="/animals/new">Tambah Hewan Baru</a>
+    <ul>
+        <% animals.forEach(animal => { %>
+            <li>
+                <%= animal.name %> (<%= animal.species %>)
+                <a href="/animals/<%= animal.id %>/edit">Edit</a>
+                <form action="/animals/<%= animal.id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <button type="submit">Hapus</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
